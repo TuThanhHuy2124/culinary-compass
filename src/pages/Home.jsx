@@ -1,6 +1,6 @@
-import { Button } from "@material-tailwind/react";
-import FoodDetail from "../components/FoodDetail";
-export default function Home() {
+import { Button } from "@material-tailwind/react"
+
+export default function Home () {
     return (
         <div className="min-h-screen flex flex-col items-center justify-start w-screen max-w-full">
             <div id="bg-container" className="relative h-max bg-contain bg-no-repeat w-screen max-w-full">
@@ -33,5 +33,5 @@ export default function Home() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
