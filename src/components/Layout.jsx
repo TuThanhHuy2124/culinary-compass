@@ -6,35 +6,24 @@ import { LinkButton } from "./LinkButton";
 export default function Layout() {
     return (
         <>
-            <header className="w-screen h-max flex items-center justify-between shadow-md">
-                <Link to="/">
-                    <h1
-                        id="header-title"
-                        className="text-lg text-blue-800 p-2.5"
-                    >
-                        CulinaryCompass
-                    </h1>
-                </Link>
-                <ul className="flex space-x-4">
-                    <LinkButton name="Home" destination="/"></LinkButton>
-                    <li>
-                        <CustomInput name="User ID:"></CustomInput>
-                    </li>
+            <header className="w-screen h-max flex items-center justify-between shadow-[0_4px_4px_rgba(0,0,0,1)] max-w-full z-50">
+                <Link to="/"><h1 id="header-title" className="text-5xl text-blue-800 m-7">CulinaryCompass</h1></Link>
+                <ul className="flex space-x-4 m-7">
+                    <Link to="/">
+                        <Button className="!bg-yellow-400 !text-blue-800">Home</Button>
+                    </Link>
+                    <li><IDInput></IDInput></li>
                 </ul>
             </header>
-            <Outlet />
-            <footer className="w-screen h-max flex items-center justify-between">
-                <LinkButton
-                    name="GitHub"
-                    destination="https://github.com/TuThanhHuy2124/culinary-compass"
-                ></LinkButton>
-                <h1 id="footer-title" className="text-lg text-blue-800">
-                    CulinaryCompass
-                </h1>
-                <LinkButton
-                    name="Contact Us"
-                    destination="mailto:thtu1@uci.edu"
-                ></LinkButton>
+            <Outlet/>
+            <footer className="w-screen h-max flex items-center justify-between max-w-full p-3 shadow-[0_-4px_4px_rgba(0,0,0,0.3)]">
+                <a href="https://github.com/TuThanhHuy2124/culinary-compass" target="_blank">
+                    <Button className="!bg-yellow-400 !text-blue-800">GitHub</Button>
+                </a>
+                <h1 id="footer-title" className="text-2xl text-blue-800">CulinaryCompass</h1>
+                <a href="mailto:thtu1@uci.edu">
+                    <Button className="!bg-yellow-400 !text-blue-800">Contact Us</Button>
+                </a>
             </footer>
         </>
     );
