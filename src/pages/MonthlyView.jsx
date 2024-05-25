@@ -10,12 +10,7 @@ import './Calendar.css';
 export default function MonthlyView () {
     localStorage.setItem("username", "test")
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
-    const [data, setData] = useState([
-        { title: 'Breakfast', date: '2024-05-23', url: `http://localhost:5173/day?${new URLSearchParams({date: "2024-05-23", start: "side"}).toString()}` },
-        { title: 'Lunch', date: '2024-05-23' },
-        { title: 'Dinner', date: '2024-05-23', url: 'https://www.google.com' },
-        { title: 'Side', date: '2024-05-23' },
-    ]);
+    const [data, setData] = useState([]);
     const [month, setMonth] = useState(null);
     useEffect(() => {
         const get_data = async () => {
@@ -32,10 +27,13 @@ export default function MonthlyView () {
             .then(response => {
                 if(response.ok) { response.json().then(meals => {
                     console.log(meals)
+                    var allMeals = []
                     for (var meal in meals){
-                        var current_meal = {title: meal, date: meal["date"]};
-                        setData(data.concat(current_meal));
+                        var current_meal = {title: meal, date: meals[meal]["date"]};
+                        allMeals.push(current_meal);
                     }
+                    console.log(allMeals)
+                    setData(allMeals);
                 })}
             });
         }

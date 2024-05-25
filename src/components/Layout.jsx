@@ -12,7 +12,7 @@ export default function Layout() {
                     <Link to="/">
                         <Button className="!bg-yellow-400 !text-blue-800">Home</Button>
                     </Link>
-                    <li><CustomInput name="User ID:"/></li>
+                    <li><CustomInput id="uid" name="User ID:"/></li>
                 </ul>
             </header>
             <Outlet/>
