@@ -7,7 +7,7 @@ import 'tippy.js/dist/tippy.css';
 import './Calendar.css';
 
 export default function MonthlyView () {
-    
+    console.log(new URLSearchParams({date: "2024-05-23"}).toString())
 
     return (
     <div id="month-view-display" className="flex flex-col items-center justify-center min-h-[var(--min-display)]">
@@ -20,7 +20,7 @@ export default function MonthlyView () {
             end: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
         events={[
-            { title: 'Breakfast', date: '2024-05-23', url: 'https://www.google.com' },
+            { title: 'Breakfast', date: '2024-05-23', url: `http://localhost:5173/day?${new URLSearchParams({date: "2024-05-23", start: "side"}).toString()}` },
             { title: 'Lunch', date: '2024-05-23' },
             { title: 'Dinner', date: '2024-05-23', url: 'https://www.google.com' },
             { title: 'Side', date: '2024-05-23' },
@@ -37,7 +37,6 @@ export default function MonthlyView () {
                   <h3>${info.event._def.title}</h3>`,
                 theme: 'translucent',
                 arrow: true,
-                animateFill: true,
             });
          }}/>
     </div>

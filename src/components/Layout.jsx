@@ -12,7 +12,6 @@ export default function Layout() {
                     <Link to="/">
                         <Button className="!bg-yellow-400 !text-blue-800">Home</Button>
                     </Link>
-                    <li><IDInput></IDInput></li>
                 </ul>
             </header>
             <Outlet/>
