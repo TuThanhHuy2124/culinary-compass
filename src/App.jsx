@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import MonthlyView from './pages/MonthlyView'
 import DailyView from './pages/DailyView'
+import DailyPlanner from './pages/DailyPlanner'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
               <Route path='/' element={<Home/>}/>
               <Route path='/month' element={<MonthlyView/>}/>
               <Route path='/day' element={<DailyView/>}/>
+              <Route path='/plan' element={<DailyPlanner/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
