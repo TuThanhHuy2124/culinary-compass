@@ -1,3 +1,4 @@
+import { useState, useEffect} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -6,12 +7,56 @@ import 'tippy.js/themes/translucent.css';
 import 'tippy.js/dist/tippy.css';
 import './Calendar.css';
 
+
+
+
 export default function MonthlyView () {
-    
+    localStorage.setItem("username", "test")
+    const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
+    const [data, setData] = useState([
+        { title: 'Breakfast', date: '2024-05-23', url: 'https://www.google.com' },
+        { title: 'Lunch', date: '2024-05-23' },
+        { title: 'Dinner', date: '2024-05-23', url: 'https://www.google.com' },
+        { title: 'Side', date: '2024-05-23' },
+    ]);
+    const [month, setMonth] = useState(null);
+    useEffect(() => {
+        const get_data = async () => {
+            fetch(CALENDER_API, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "username": localStorage.getItem("username"),
+                    "month": month
+                }),
+            })
+            .then(response => {
+                if(response.ok) { response.json().then(meals => {
+                    for (var meal in meals){
+                        var current_meal = {title: meal, date: meal[date]};
+                        setData(data.concat(current_meal));
+                    }
+                })}
+            });
+        }
+        get_data();
+    }, [month]);
+
+    const setCurrentMonth = (arg) =>{
+        if (arg.view == undefined){
+            return;
+        }
+        const curr_month = arg.view.currentStart.getMonth()+1
+        setMonth(curr_month);
+        
+    }
 
     return (
     <div id="month-view-display" className="flex flex-col items-center justify-center min-h-[var(--min-display)]">
         <FullCalendar
+        datesSet={(arg)=>{setCurrentMonth(arg)}}
         plugins={[ dayGridPlugin, timeGridPlugin ]}
         initialView="dayGridMonth"
         headerToolbar={{
@@ -19,14 +64,9 @@ export default function MonthlyView () {
             center: "title",
             end: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        events={[
-            { title: 'Breakfast', date: '2024-05-23', url: 'https://www.google.com' },
-            { title: 'Lunch', date: '2024-05-23' },
-            { title: 'Dinner', date: '2024-05-23', url: 'https://www.google.com' },
-            { title: 'Side', date: '2024-05-23' },
-        ]}
+        events={data}
         eventDidMount={ (info) => {
-            console.log(info.event._def.title);
+            console.log(info);
             tippy(info.el, {
                 trigger: 'mouseenter focus',
                 touch: 'hold',
