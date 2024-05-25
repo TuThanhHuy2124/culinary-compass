@@ -5,17 +5,17 @@ export default function Layout () {
     
     return (
         <>
-            <header className="w-screen h-max flex items-center justify-between">
-                <h1 id="header-title" className="text-lg text-blue-800">CulinaryCompass</h1>
+            <header className="w-screen h-max flex items-center justify-between shadow-md">
+                <h1 id="header-title" className="text-lg text-blue-800 p-2.5">CulinaryCompass</h1>
                 <ul>
                     <Link to="/"><li>Home</li></Link>
                 </ul>
             </header>
             <Outlet/>
-            <footer className="w-screen h-max flex items-center justify-between">
-                <a href="https://github.com/TuThanhHuy2124/culinary-compass"><Button>GitHub</Button></a>
-                <h1 id="footer-title" className="text-lg text-blue-800">CulinaryCompass</h1>
-                <a href="mailto:thtu1@uci.edu"><Button>Contact Us</Button></a>
+            <footer className="w-screen h-max flex items-center justify-between shadow-[-4px_0_4px_2px_rgba(0,0,0,0.3)]">
+                <a href="https://github.com/TuThanhHuy2124/culinary-compass"><Button className="!bg-yellow-300 !text-blue-800">GitHub</Button></a>
+                <h1 id="footer-title" className="text-lg text-blue-800 p-2.5">CulinaryCompass</h1>
+                <a href="mailto:thtu1@uci.edu"><Button className="!bg-yellow-300 !text-blue-800 !m-2.5">Contact Us</Button></a>
             </footer>
         </>
     )
