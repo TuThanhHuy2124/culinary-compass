@@ -2,11 +2,6 @@ import { Button } from "@material-tailwind/react"
 import { CustomInput } from "../components/CustomInput"
 
 export default function Home () {
-    const getStartedEvent = () => {
-        localStorage.setItem("username", document.getElementById("uid").value)
-        window.location.href += "month"
-        
-    }
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-start w-screen max-w-full z-0">
@@ -20,7 +15,7 @@ export default function Home () {
                     <img src="../../home_img.png" className="h-auto w-48"></img>
                 </div>
             </div>
-            <Button onClick={getStartedEvent} className="!bg-yellow-400 !text-blue-800 -translate-y-3/4 !h-[10vh]">
+            <Button onClick={()=>{window.location.href += "month"}}className="!bg-yellow-400 !text-blue-800 -translate-y-3/4 !h-[10vh]">
                 <h1 className="text-[3vw] p-2">Get Started</h1>
             </Button>
             <div id="row-1-container" className="flex">
