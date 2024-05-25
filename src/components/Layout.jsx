@@ -15,10 +15,10 @@ export default function Layout () {
                 </ul>
             </header>
             <Outlet/>
-            <footer className="w-screen h-max flex items-center justify-between shadow-[-4px_0_4px_2px_rgba(0,0,0,0.3)]">
-                <a href="https://github.com/TuThanhHuy2124/culinary-compass"><Button className="!bg-yellow-300 !text-blue-800">GitHub</Button></a>
-                <h1 id="footer-title" className="text-lg text-blue-800 p-2.5">CulinaryCompass</h1>
-                <a href="mailto:thtu1@uci.edu"><Button className="!bg-yellow-300 !text-blue-800 !m-2.5">Contact Us</Button></a>
+            <footer className="w-screen h-max flex items-center justify-between">
+                <LinkButton name="GitHub" destination="https://github.com/TuThanhHuy2124/culinary-compass"></LinkButton>
+                <h1 id="footer-title" className="text-lg text-blue-800">CulinaryCompass</h1>
+                <LinkButton name="Contact Us" destination="mailto:thtu1@uci.edu"></LinkButton>
             </footer>
         </>
     )
