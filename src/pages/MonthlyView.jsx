@@ -32,7 +32,7 @@ export default function MonthlyView () {
                         var current_meal = {title: meal, date: meals[meal]["date"]};
                         allMeals.push(current_meal);
                     }
-                    console.log(allMeals)
+
                     setData(allMeals);
                 })}
             });

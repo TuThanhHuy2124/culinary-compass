@@ -10,7 +10,8 @@ export default function MealsDisplay ({ title, meals, mealTitles }) {
     console.log(meals)
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-    return (
+    return (<>
+        {(meals != undefined) && 
         <div className="w-[80vw] ">
             {
                 meals.map((meal, mi) => {
@@ -36,6 +37,6 @@ export default function MealsDisplay ({ title, meals, mealTitles }) {
                     
                 })
             }
-        </div>
-    )
+        </div>}
+    </>);
 }

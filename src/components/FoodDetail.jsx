@@ -58,11 +58,10 @@ export default function FoodDetail(){
         .then(response => {
             if(response.ok) {console.log("Success!");}
         });
-        console.log(nutrients);
     }
 
     return (
-        <div className="flex flex-col justify-center w-2/3 border-4 p-4 border-gray rounded-xl bg-[#DCDDFF] bg-opacity-75">
+        <div className="flex flex-col justify-center w-full border-4 p-4 border-gray rounded-xl bg-[#DCDDFF] bg-opacity-75">
             <CustomInput id="name" name="Name of Food"/><br/>
             <div id="nutrients" className="overflow-auto max-h-[30vh]">
                 <p>Macronutrients Values:</p>
@@ -84,7 +83,7 @@ export default function FoodDetail(){
                     </>
                 ))}
             </div>
-            <Button onClick={addFood} className="!bg-yellow-400 !text-blue-800">Add Food</Button>
+            <Button id="submitfood" onClick={addFood} className="!bg-yellow-400 !text-blue-800">Add Food</Button>
         </div>
     );
 }
