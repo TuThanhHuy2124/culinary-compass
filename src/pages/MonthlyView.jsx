@@ -76,7 +76,6 @@ export default function MonthlyView () {
                   <h3>${info.event._def.title}</h3>`,
                 theme: 'translucent',
                 arrow: true,
-                animateFill: true,
             });
          }}/>
     </div>
