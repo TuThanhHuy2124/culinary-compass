@@ -7,9 +7,6 @@ import 'tippy.js/themes/translucent.css';
 import 'tippy.js/dist/tippy.css';
 import './Calendar.css';
 
-
-
-
 export default function MonthlyView () {
     localStorage.setItem("username", "test")
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
@@ -34,13 +31,15 @@ export default function MonthlyView () {
             })
             .then(response => {
                 if(response.ok) { response.json().then(meals => {
+                    console.log(meals)
                     for (var meal in meals){
-                        var current_meal = {title: meal, date: meal[date]};
+                        var current_meal = {title: meal, date: meal["date"]};
                         setData(data.concat(current_meal));
                     }
                 })}
             });
         }
+        console.log(data)
         get_data();
     }, [month]);
 

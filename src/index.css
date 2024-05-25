@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+      font-family: 'Artifika';
+      font-style: normal;
+      font-weight: 400;
+      src: url(/public/fonts/Artifika/Artifika-Regular.ttf);
+    }
+  }
 :root {
     --header-height: 104px;
     --footer-height: 64px;
@@ -10,6 +18,10 @@
     --fc-button-bg-color: red;
     --fc-button-hover-bg-color: blue;
     --fc-button-active-bg-color: green;
+}
+
+* {
+    font-family: Artifika;
 }
 
 .row-1 p{

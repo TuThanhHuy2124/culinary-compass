@@ -8,7 +8,7 @@ export default function DailyView () {
     const start = queryParams.get("start");
 
     useEffect(() => {
-        if(window.location.href.indexOf("#") === -1) {
+        if(start !== null && window.location.href.indexOf("#") === -1) {
             window.location.href = window.location.href + `#${start}`
         }
     }, [])

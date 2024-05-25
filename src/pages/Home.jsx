@@ -1,4 +1,5 @@
 import { Button } from "@material-tailwind/react"
+import { CustomInput } from "../components/CustomInput"
 
 export default function Home () {
     return (
