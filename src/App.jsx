@@ -1,16 +1,17 @@
 import { useState } from 'react'
-import { BrowserRouter, Router, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './pages/Layout'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-        <BrowserRouter>
-          <Router>
-            <Route></Route>
-          </Router>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
