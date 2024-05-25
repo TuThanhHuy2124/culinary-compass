@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -7,7 +6,6 @@ import DailyView from './pages/DailyView'
 import DailyPlanner from './pages/DailyPlanner'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
