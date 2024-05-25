@@ -9,7 +9,7 @@ export default function Layout () {
         <>
             <header className="w-screen h-max flex items-center justify-between shadow-md">
                 <h1 id="header-title" className="text-lg text-blue-800 p-2.5">CulinaryCompass</h1>
-                <ul class="flex space-x-4">
+                <ul className="flex space-x-4">
                     <LinkButton name="Home" destination="/"></LinkButton>
                     <li><IDInput></IDInput></li>
                 </ul>

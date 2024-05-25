@@ -1,9 +1,10 @@
 import { Button } from "@material-tailwind/react"
 import { IDInput } from "../components/IDInput"
-
+import { SearchBar } from "../components/SearchBar"
 export default function Home () {
     return (
         <div className="min-h-screen flex flex-col items-center justify-start w-screen">
+            <SearchBar></SearchBar>
             <div id="bg-container" className="relative h-auto bg-contain bg-no-repeat w-full">
                 <img id="bg" src="../../home_bg.svg"></img>
                 <div id="greeting" className="absolute top-0"> 
