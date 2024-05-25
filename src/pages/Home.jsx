@@ -16,13 +16,23 @@ export default function Home () {
                 </div>
             </div>
             <Button>Get Started</Button>
-            <div id="row-1">
-                <p className="bg-red-300 w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto libero impedit id porro cum iste velit, corporis, quasi omnis eligendi accusantium, quia illo? Repellendus, officia accusantium inventore sapiente voluptatum nihil?</p>
-                <img src="../../home_top_bg.svg"></img>
+            <div id="row-1-container" className="flex">
+                <div id="row-1-text" className="relative w-fit p-2">
+                    <p className="absolute bg-red-300 top-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto libero impedit id porro cum iste velit, corporis, quasi omnis eligendi accusantium, quia illo? Repellendus, officia accusantium inventore sapiente voluptatum nihil?</p>
+                    <img src="../../home_top_bg.svg"></img>
+                </div>
+                <div className="p-2">
+                    <img src="../../home_top_bg.svg"></img>
+                </div>
             </div>
-            <div id="row-2">
-                <img src="../../home_bottom_bg.svg"></img>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia eligendi, alias laudantium perferendis iste commodi in nostrum, exercitationem, fuga ducimus nisi doloribus. Tenetur praesentium esse excepturi illum minus totam consequatur.</p>
+            <div id="row-2-container" className="flex">
+                <div className="p-2">
+                    <img src="../../home_top_bg.svg"></img>
+                </div>
+                <div id="row-2" className="relative p-2">
+                    <img src="../../home_bottom_bg.svg"></img>
+                    <p className="absolute bg-red-300 top-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia eligendi, alias laudantium perferendis iste commodi in nostrum, exercitationem, fuga ducimus nisi doloribus. Tenetur praesentium esse excepturi illum minus totam consequatur.</p>
+                </div>
             </div>
         </div>
     )
