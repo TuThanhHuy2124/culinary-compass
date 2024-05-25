@@ -7,9 +7,6 @@ import 'tippy.js/themes/translucent.css';
 import 'tippy.js/dist/tippy.css';
 import './Calendar.css';
 
-
-
-
 export default function MonthlyView () {
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
     const [data, setData] = useState([]);
@@ -38,6 +35,7 @@ export default function MonthlyView () {
                 })}
             });
         }
+        console.log(data)
         get_data();
     }, [month]);
 
