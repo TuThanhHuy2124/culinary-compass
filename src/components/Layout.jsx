@@ -1,5 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { Link, Outlet } from "react-router-dom";
+import { IDInput } from "./IDInput";
+import { LinkButton } from "./LinkButton";
 
 export default function Layout () {
     
@@ -7,8 +9,9 @@ export default function Layout () {
         <>
             <header className="w-screen h-max flex items-center justify-between">
                 <h1 id="header-title" className="text-lg text-blue-800">CulinaryCompass</h1>
-                <ul>
-                    <Link to="/"><li>Home</li></Link>
+                <ul class="flex space-x-4">
+                    <LinkButton name="Home" destination="/"></LinkButton>
+                    <li><IDInput></IDInput></li>
                 </ul>
             </header>
             <Outlet/>

@@ -1,4 +1,5 @@
 import { Button } from "@material-tailwind/react"
+import { IDInput } from "../components/IDInput"
 
 export default function Home () {
     return (
