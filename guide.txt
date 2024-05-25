@@ -1,0 +1,13 @@
+(If you fetch this repo, run "npm i" and start from 3)
+
+1. Create react vite
+- npm create vite@latest zotmeal -- -template react
+- cd zotmeal
+2. Install Tailwind
+- npm install -D tailwindcss postcss autoprefixer
+- npx tailwindcss init -p
+3. Install fullCalendar & Material Tailwind
+- npm i @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction @material-tailwind/react
+4. Change tailwind.config.css to the file in this folder
+5. Change index.css to the file in ./src
+6. Wrap <App/> in <ThemeProvider> (main.jsx)
