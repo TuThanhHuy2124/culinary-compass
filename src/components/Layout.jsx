@@ -6,7 +6,7 @@ import { LinkButton } from "./LinkButton";
 export default function Layout() {
     return (
         <>
-            <header className="w-screen h-max flex items-center justify-between shadow-[0_4px_4px_rgba(0,0,0,1)] max-w-full z-50">
+            <header className="relative w-screen h-max flex items-center justify-between shadow-[0_4px_4px_rgba(143,140,140)] max-w-full z-[99999]">
                 <Link to="/"><h1 id="header-title" className="text-5xl text-blue-800 m-7">CulinaryCompass</h1></Link>
                 <ul className="flex space-x-4 m-7">
                     <Link to="/">

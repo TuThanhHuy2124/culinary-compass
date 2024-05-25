@@ -1,0 +1,8 @@
+.fc {
+    width: 80%;
+    max-width: 680px;
+    height: auto;
+}
+.fc-event-main {
+    cursor: pointer;
+}
