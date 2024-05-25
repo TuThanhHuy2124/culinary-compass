@@ -11,7 +11,6 @@ import './Calendar.css';
 
 
 export default function MonthlyView () {
-    localStorage.setItem("username", "test")
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
     const [data, setData] = useState([]);
     const [month, setMonth] = useState(null);
@@ -29,7 +28,6 @@ export default function MonthlyView () {
             })
             .then(response => {
                 if(response.ok) { response.json().then(meals => {
-                    console.log(meals)
                     var allMeals = []
                     for (var meal in meals){
                         var current_meal = {title: meal, date: meals[meal]["date"]};

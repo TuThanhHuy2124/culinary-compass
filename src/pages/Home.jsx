@@ -3,6 +3,8 @@ import { Button } from "@material-tailwind/react"
 export default function Home () {
     const getStartedEvent = () => {
         localStorage.setItem("username", document.getElementById("uid").value)
+        window.location.href += "month"
+        
     }
 
     return (
