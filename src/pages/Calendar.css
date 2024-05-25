@@ -1,8 +1,14 @@
-.fc {
-    width: 80%;
-    max-width: 680px;
-    height: auto;
-}
+
 .fc-event-main {
     cursor: pointer;
+}
+.fc-daygrid-day:hover {
+    --hover-color: rgba(174, 179, 249, 0.5);
+    --fc-today-bg-color: var(--hover-color);
+    background-color: var(--hover-color);
+}
+.fc-daygrid-day:active {
+    --active-color: rgba(174, 249, 185, 0.5);
+    --fc-today-bg-color: var(--active-color);
+    background-color: var(--active-color);
 }
