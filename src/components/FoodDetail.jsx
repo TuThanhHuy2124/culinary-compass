@@ -36,9 +36,8 @@ export default function FoodDetail(){
         "Selenium",
     ]
     return (
-        <div className="flex flex-col justify-center w-2/3 border-4 p-4 border-gray rounded-xl">
-            <p>Name of Food:</p>
-            <CustomInput name="Ex: Pizza"/><br/>
+        <div className="flex flex-col justify-center w-2/3 border-4 p-4 border-gray rounded-xl bg-[#DCDDFF] bg-opacity-75">
+            <CustomInput name="Name of Food"/><br/>
             <div className="overflow-auto max-h-[30vh]">
                 <p>Macronutrients Values:</p>
                 {macro.map((nutrient, i) => (

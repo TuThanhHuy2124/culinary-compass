@@ -5,7 +5,7 @@ import { LinkButton } from "./LinkButton";
 import { useState } from "react";
 
 export default function Layout() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(!(localStorage.getItem("username") === null));
 
     const saveUsername = () => {
         localStorage.setItem("username", document.getElementById("uid").value);
@@ -24,6 +24,8 @@ export default function Layout() {
                 </ul> :
                 <ul className="flex space-x-4 m-7">
                     <LinkButton destination="/" name="Home"></LinkButton>
+                    <LinkButton destination="/day" name="Today"></LinkButton>
+                    <LinkButton destination="/plan" name="My Plan"></LinkButton>
                     <LinkButton destination="/month" name="Calendar"></LinkButton>
                 </ul>
                 }
