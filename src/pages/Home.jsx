@@ -23,7 +23,6 @@ export default function Home () {
             </Button>
             <p className="my-2 text-6xl font-medium w-full justify-start">Your navigator to a healthier lifestyle</p>
             <div className="flex flex-col">
-                
                 <div id="row-1-text" className="flex w-screen p-2 content-start">
                     <div className="items-center align-middle w-1/3 pl-8"><p className="text-4xl font-thin w-full mr-2">Add your meals to our calendar, and track your nutrition.</p></div>
                     <div className="w-2/3 border-black rounded-xl border-2 flex justify-center items-center"><div className="flex w-11/12 items-center  justify-center border-black border-2 rounded-lg"><img className="rounded-lg justify-center max-w-full max-h-full"src="public/logos/input.png"></img></div></div>

@@ -93,7 +93,7 @@ export default function DailyPlanner () {
         <Button className="!text-base my-4 w-[30vw] !bg-yellow-400 !text-blue-700" onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
         <div className="flex w-full justify-around">
             {addFood && <FoodDetail/>}
-            <MealList fooditems={mealList}></MealList>
+            {(mealList === null || addFood) && <MealList fooditems={mealList}></MealList>}
         </div>
         <Button id="submitfood" onClick={appendFood} className="!text-base my-4 !bg-yellow-400 !text-blue-800 w-[20vw]">Add Food</Button>
         <div className="w-1/3 mt-4"><CustomInput id="mealname" name="Meal Name"/></div>

@@ -15,7 +15,14 @@ export default function MonthlyView () {
     const DAY_URL = "http://localhost:5173/day?"
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [events, setEvents] = useState([]);
     const [month, setMonth] = useState(null);
+
+    const queryToDate = (str) => {
+        const [, date] = str.split("=")
+        return date
+    }
+
     useEffect(() => {
         const get_data = async () => {
             fetch(CALENDER_API, {
@@ -29,15 +36,21 @@ export default function MonthlyView () {
                 }),
             })
             .then(response => {
-                if(response.ok) { response.json().then(meals => {
-                    console.log(meals)
-                    var allMeals = []
-                    for (var meal in meals){
-                        var current_meal = {title: meal, date: meals[meal]["date"], url: DAY_URL + "date=" + meals[meal]["date"]};
-                        allMeals.push(current_meal);
+                if(response.ok) { response.json().then(data => {
+                    console.log(data)
+                    var allEvents = []
+                    for (const date in data) {
+                        for(const meal of data[date]) {
+                            for(const mealName in meal) {
+                                var currentEvent = {title: mealName, date: date, url: DAY_URL + "date=" + date};
+                                allEvents.push(currentEvent);
+                            }
+                        }
                     }
-                    
-                    setData(allMeals)
+                    console.log("here:")
+                    console.log(data)
+                    setData(data)
+                    setEvents(allEvents)
                 })}
                 setLoading(false)
             });
@@ -45,10 +58,27 @@ export default function MonthlyView () {
         get_data();
     }, [month]);
 
+    const dateMealToFood = (date, mealName) => {
+        for(const meal of data[date]) {
+            for(const meal_name in meal) {
+                console.log(meal_name)
+                if(meal_name === mealName) 
+                    {return meal[mealName]}}
+        }
+    }
+
     const setCurrentMonth = (arg) =>{
         if (arg.view == undefined) {return;}
         const curr_month = arg.view.currentStart.getMonth()+1
         setMonth(curr_month);
+    }
+
+    const generatePopover = (arr) => {
+        let result = ""
+        for(const item of arr) {
+            result += `<h3>${item}</h3><br/>`
+        }
+        return result
     }
 
     return (
@@ -70,17 +100,17 @@ export default function MonthlyView () {
                 console.log(BASE_URL + new URLSearchParams({date: info.dateStr}).toString())
                 window.location.href = BASE_URL + "/plan?" + new URLSearchParams({date: info.dateStr}).toString()
             }}
-            events={data}
+            events={events}
             eventDidMount={ (info) => {
-                console.log(info);
+                console.log(events)
+                const foodItems = dateMealToFood(queryToDate(info.event._def.url), info.event._def.title)
+                console.log(foodItems);
                 tippy(info.el, {
                     trigger: 'mouseenter focus',
                     touch: 'hold',
                     allowHTML: true,
                     content:
-                    `<h3>${info.event._def.title}</h3>
-                    <br/>
-                    <h3>${info.event._def.title}</h3>`,
+                    `${generatePopover(foodItems)}`,
                     theme: 'translucent',
                     arrow: true,
                 });
