@@ -9,15 +9,7 @@ import {
   Input,
 } from "@material-tailwind/react";
  
-export function SearchBar() {
-  const [searching, setSearching] = useState(false);
-
-  const handleMenu = (e) => {
-    console.log(e);
-    if(e.target.value === "") {setSearching(false)}
-    else setSearching(true)
-  }
-  
+export function SearchBar({renderOption, handleMenu, handleClick}) {
   return (
     <div className="mt-8">
         <Menu
@@ -36,9 +28,9 @@ export function SearchBar() {
               }}
               onChange={handleMenu}
             />
-            <MenuItem>Menu Item 1</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
-            <MenuItem>Menu Item 3</MenuItem>
+            {renderOption.map((option, i) => {
+              return <>{(i < 5) && <MenuItem onClick={handleClick} key={i}>{option}</MenuItem>}</>
+            })}
           </MenuList>
         </Menu>
     </div>

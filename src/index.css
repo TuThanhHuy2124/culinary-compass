@@ -24,8 +24,11 @@
     font-family: Roboto;
 }
 
-.row-1 p{
-    width: inherit;
+#bottom-img {
+  transform: skew(10deg, 10deg);
+}
+#top-img {
+  transform: skew(-10deg, -10deg);
 }
 
 /* width */

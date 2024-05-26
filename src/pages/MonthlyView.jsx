@@ -101,6 +101,7 @@ export default function MonthlyView () {
                 window.location.href = BASE_URL + "/plan?" + new URLSearchParams({date: info.dateStr}).toString()
             }}
             events={events}
+            dayMaxEventRows={4}
             eventDidMount={ (info) => {
                 console.log(events)
                 const foodItems = dateMealToFood(queryToDate(info.event._def.url), info.event._def.title)

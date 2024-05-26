@@ -5,7 +5,7 @@ import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../components/CustomInput";
 import MealList from "../components/MealList";
-import { useEffect } from "module";
+import { useEffect } from "react";
 
 export const reformatDate = (date) => {
     const [y, m, d] = date.split("-");
@@ -16,12 +16,66 @@ export default function DailyPlanner () {
     const [addFood, setAddFood] = useState(false);
     const [mealList, setMealList] = useState([]);
     const [foodId, setFoodId] = useState([]);
-    
+    const [clicked, setClicked] = useState(null);
+
     const queryParams = new URLSearchParams(window.location.search);
     const date = queryParams.get("date");
     const INSERT_FOOD_API = "https://culinarycompassapi.onrender.com/create/food_item/"
     const INSERT_MEAL_API = "https://culinarycompassapi.onrender.com/create/meal/"
     const ALL_FOOD_API = "https://culinarycompassapi.onrender.com/all_fooditems/"
+    
+    const test = {
+        "Breakfast": {
+          calories: 100,
+          vitamin_a: 200
+        },
+        "Lunch": {
+          calories: 100,
+          vitamin_b: 200
+        },
+        "NB": {
+          calories: 100,
+          carbs: 200
+        },
+        "LA": {
+          calories: 100,
+          sodium: 200
+        },
+        "NOT": {
+          calories: 100,
+          vitamin_k: 200
+        },
+        "YES": {
+          calories: 100,
+          vitamin_e: 200
+        },
+    }
+    
+    const MEAL_NAMES = Object.keys(test).sort((a, b) => a.localeCompare(b));
+    const [renderOption, setRenderOption] = useState(MEAL_NAMES);
+
+    const handleMenu = (e) => {
+        console.log(e);
+        if(e.target.value === "") {
+            setRenderOption(MEAL_NAMES)
+        }
+        else {
+            const newOptions = MEAL_NAMES.filter((mealName) => mealName.toLowerCase().startsWith(e.target.value))
+            setRenderOption(newOptions)
+        }
+    }
+
+    const handleClick = (e) => {
+        console.log(e.target.innerText);
+        setClicked(null)
+        setClicked(e.target.innerText)
+        setAddFood(true)
+    }
+
+    const handleAddFood = () => {
+        if(clicked !== null) { setClicked(null) }
+        else setAddFood(!addFood)
+    }
 
     useEffect(() => {
         const allFood = async () => {
@@ -29,18 +83,21 @@ export default function DailyPlanner () {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "no-cors"
                 },
-                body: JSON.stringify({ username: localStorage.getItem("username") }),
+                body: JSON.stringify({ "username": localStorage.getItem("username") }),
             })
             .then(response => {
                 console.log(response);
                 if (response.ok) {
+                    console.log(response)
                     response.json().then(data => {
                         console.log(data);
                     });
                 }
-            }); // This closing bracket was missing
+            });
         };
+
         allFood();
     }, []);
 
@@ -56,6 +113,7 @@ export default function DailyPlanner () {
                 nutrients[children[i].id.toLowerCase()] = children[i].value;
             }
         }
+        console.log(nutrients)
         fetch(INSERT_FOOD_API, {
             method: "POST",
             headers: {
@@ -69,6 +127,7 @@ export default function DailyPlanner () {
                 setMealList(mealList.concat(nutrients["name"]));
                 setFoodId(foodId.concat(res["item_id"]))
             })}
+            setClicked(null);
         });
 
     }
@@ -110,12 +169,13 @@ export default function DailyPlanner () {
     <div className="relative min-h-[var(--min-display)] flex flex-col items-center justify-center z-99999 pt-10 pb-10">
         <Link to="/month"><h1 className="text-5xl mb-2 hover:underline active:border-8 active:no-underline active:text-gray-600 underline-offset-4 transition-all p-4 rounded-xl border-gray-600">{reformatDate(date)}</h1></Link>
         <h2 className="text-2xl">Your meal planning starts here!</h2>
-        <SearchBar/>
-        <Button className="!text-base my-4 w-[30vw] !bg-yellow-400 !text-blue-700" onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
+        <SearchBar renderOption={renderOption} handleMenu={handleMenu} handleClick={handleClick}/>
+        <Button className="!text-base my-4 w-[30vw] !bg-yellow-400 !text-blue-700" onClick={handleAddFood}>Add Custom Food Item</Button>
+        {addFood &&
         <div className="flex w-full justify-around">
-            {addFood && <FoodDetail/>}
-            {(mealList === null || addFood) && <MealList fooditems={mealList}></MealList>}
-        </div>
+            <FoodDetail name={clicked} nutrients={test[clicked]}/>
+            {(mealList !== null) && <MealList fooditems={mealList}></MealList>}
+        </div>}
         <Button id="submitfood" onClick={appendFood} className="!text-base my-4 !bg-yellow-400 !text-blue-800 w-[20vw]">Add Food</Button>
         <div className="w-1/3 mt-4"><CustomInput id="mealname" name="Meal Name"/></div>
         <Button onClick={createMeal} className="!text-base !bg-yellow-400 !text-blue-800 mt-4 w-[20vw]">Add meal</Button>

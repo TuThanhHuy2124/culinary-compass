@@ -82,7 +82,7 @@ export default function MealsDisplay ({ meals, setMeals }) {
         fetch(DELETE_FOOD_API, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 "username": localStorage.getItem("username"),
