@@ -5,6 +5,7 @@ import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../components/CustomInput";
 import MealList from "../components/MealList";
+import { useEffect } from "module";
 
 export const reformatDate = (date) => {
     const [y, m, d] = date.split("-");
@@ -20,8 +21,28 @@ export default function DailyPlanner () {
     const date = queryParams.get("date");
     const INSERT_FOOD_API = "https://culinarycompassapi.onrender.com/create/food_item/"
     const INSERT_MEAL_API = "https://culinarycompassapi.onrender.com/create/meal/"
+    const ALL_FOOD_API = "https://culinarycompassapi.onrender.com/all_fooditems/"
 
-    
+    useEffect(() => {
+        const allFood = async () => {
+            fetch(ALL_FOOD_API, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username: localStorage.getItem("username") }),
+            })
+            .then(response => {
+                console.log(response);
+                if (response.ok) {
+                    response.json().then(data => {
+                        console.log(data);
+                    });
+                }
+            }); // This closing bracket was missing
+        };
+        allFood();
+    }, []);
 
     const appendFood = async (e) => {
         console.log(e)

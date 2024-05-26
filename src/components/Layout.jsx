@@ -23,7 +23,7 @@ export default function Layout() {
                 </Link>
                 
                 {!loggedIn ? 
-                <ul className="flex space-x-4 m-7">
+                <ul className="flex items-center space-x-4 m-7">
                     <LinkButton destination="/" name="Home"></LinkButton>
                     <li><CustomInput id="uid" name="User ID:"/></li>
                     <Button onClick={saveUsername} className="!bg-yellow-400 !text-blue-800">Save</Button>

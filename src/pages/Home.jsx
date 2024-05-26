@@ -34,14 +34,13 @@ export default function Home () {
             </div>
             <img className="w-full" src="public/backgrounds/Group 56.png"/>
             <p className="my-2 text-6xl font-medium w-full text-right p-8">Achieve your goals consistently</p>
-            <div className="flex w-screen pl-8">
+            <div className="flex w-screen pl-8 mb-8">
             <div className="w-2/3 border-black rounded-xl border-2 flex justify-center items-center"><div className="flex w-11/12 items-center  justify-center border-black border-2 rounded-lg"><img className="rounded-lg justify-center max-w-full max-h-full"src="public/backgrounds/calendar.png"></img></div></div>
             <div className="flex flex-col justify-center content-between w-1/3 pr-8">
                         <p className="text-4xl font-thin w-full mr-2 text-right">Plan your month, <br/> day-by-day.</p>
                         <div className="my-4 flex justify-center items-center"><img className="self-end max-h-48 " src="public/logos/petah.png"></img></div>
                         <p className="text-3xl font-thin w-full mr-2 text-right">Let us guide you closer towards your dreams.</p>
                     </div>
-            
             </div>
         </div>
     )
