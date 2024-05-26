@@ -24,9 +24,7 @@ export default function DailyPlanner () {
 
     const appendFood = async () => {
         var nutrients = new Object();
-        if(document.getElementById("name") == null){
-            return
-        }
+        if(document.getElementById("name") == null){return}
         nutrients["name"] = document.getElementById("name").value;
         var input = document.getElementById("nutrients");
         var children = input.getElementsByTagName("input");
@@ -86,7 +84,7 @@ export default function DailyPlanner () {
         <h2 className="text-2xl">Your meal planning starts here!</h2>
         <SearchBar/>
         <Button className="my-4"onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
-        <div className="flex w-4/5 justify-center">
+        <div className="flex w-full justify-around">
             {addFood && <FoodDetail/>}
             <MealList fooditems={mealList}></MealList>
         </div>
