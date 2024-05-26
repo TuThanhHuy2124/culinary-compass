@@ -8,6 +8,8 @@ import {
 
 export default function MealsDisplay ({ meals }) {
     let mealNames = [];
+    const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/food_item/"
+
 
     const [open, setOpen] = useState(0);
     console.log(meals)
@@ -54,6 +56,28 @@ export default function MealsDisplay ({ meals }) {
         return totalLengthSoFar
     }
 
+    const deleteFood = (foodName)=>{
+        if (!localStorage.getItem("username")){
+            return
+        }
+        console.log(foodName);
+        fetch(DELETE_FOOD_API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "username": localStorage.getItem("username"),
+                "name": foodName,
+            }),
+        })
+         .then(response => {
+             if(response.ok) { response.json().then(() => {
+                console.log("Success")
+             })}
+         });
+    }
+
     return (
     <>
         {(meals != undefined) && 
@@ -82,7 +106,7 @@ export default function MealsDisplay ({ meals }) {
                                                             )
                                                     })}
                                                     <div className="w-full flex items-center justify-center">
-                                                        <Button color="red">Delete</Button>
+                                                        <Button onClick={() => deleteFood(food.name)}color="red">Delete</Button>
                                                     </div>
                                                 </AccordionBody>
                                             </Accordion>)

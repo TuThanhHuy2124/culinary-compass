@@ -8,8 +8,8 @@ export default function Home () {
                 <img id="bg" src="../../backgrounds/home_bg.svg" className="max-w-full w-screen z-[-1]"></img>
                 <div className="box-border w-full absolute top-1/2 -translate-y-1/2 flex items-center justify-around">
                     <div id="greeting" className=""> 
-                        <h1 className="text-5xl text-white mb-2">Welcome to CulinaryCompass!</h1>
-                        <h2 className="text-2xl text-white">Start planning your meals at UCI and beyond!</h2>
+                        <h1 className="text-6xl text-white mb-2 font-bold">Welcome to CulinaryCompass!</h1>
+                        <h2 className="text-2xl text-white font-light">Start planning your meals at UCI and beyond!</h2>
                     </div>
                     <img src="../../backgrounds/home_img.png" className="h-auto w-48"></img>
                 </div>
@@ -23,7 +23,8 @@ export default function Home () {
             </Button>
             <div id="row-1-container" className="flex">
                 <div id="row-1-text" className="relative w-fit p-2">
-                    <p className="absolute bg-red-300 w-fit mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto libero impedit id porro cum iste velit, corporis, quasi omnis eligendi accusantium, quia illo? Repellendus, officia accusantium inventore sapiente voluptatum nihil?</p>
+                    
+                    <p className="absolute text-4xl font-medium w-fit mr-2">Your one stop site to navigating a healthier lifestyle</p>
                     <img src="../../backgrounds/home_top_bg.svg"></img>
                 </div>
                 <div className="p-2">

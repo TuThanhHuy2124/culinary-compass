@@ -4,10 +4,10 @@
 
 @layer base {
     @font-face {
-      font-family: 'Artifika';
+      font-family: 'Roboto';
       font-style: normal;
       font-weight: 400;
-      src: url(/public/fonts/Artifika/Artifika-Regular.ttf);
+      src: url(/public/fonts/Artifika/Roboto-Regular.ttf);
     }
   }
 :root {
@@ -24,7 +24,7 @@
 }
 
 * {
-    font-family: Artifika;
+    font-family: Roboto;
 }
 
 .row-1 p{
