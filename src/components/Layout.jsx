@@ -54,6 +54,8 @@ export default function Layout() {
                     <LinkButton destination={`/day?date=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`} name="Today"></LinkButton>
                     <LinkButton destination={`/plan?date=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`} name="My Plan"></LinkButton>
                     <LinkButton destination="/month" name="Calendar"></LinkButton>
+                    <LinkButton onClick={()=>{localStorage.clear(); setLoggedIn(false);}} destination="/" name="Logout"></LinkButton>
+                    
                 </ul>
                 }
             </header>
