@@ -8,7 +8,7 @@ import {
 
 export default function MealsDisplay ({ meals }) {
     let mealNames = [];
-    const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/food_item/"
+    const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/fooditem/"
 
 
     const [open, setOpen] = useState(0);
@@ -60,7 +60,6 @@ export default function MealsDisplay ({ meals }) {
         if (!localStorage.getItem("username")){
             return
         }
-        console.log(foodName);
         fetch(DELETE_FOOD_API, {
             method: "POST",
             headers: {
@@ -73,7 +72,6 @@ export default function MealsDisplay ({ meals }) {
         })
          .then(response => {
              if(response.ok) { response.json().then(() => {
-                console.log("Success")
              })}
          });
     }

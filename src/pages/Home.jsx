@@ -18,28 +18,19 @@ export default function Home () {
                 if(localStorage.getItem("username") !== null) {
                     window.location.href += "month"
                 }}}
-                className="!bg-yellow-400 !text-blue-800 -translate-y-3/4 !h-[10vh]">
+                className="!bg-yellow-400 !text-blue-800 -translate-y-3/4 !h-[10vh] mt-2">
                 <h1 className="text-[3vw] p-2">Get Started</h1>
             </Button>
-            <div id="row-1-container" className="flex">
-                <div id="row-1-text" className="relative w-fit p-2">
-                    
-                    <p className="absolute text-4xl font-medium w-fit mr-2">Your one stop site to navigating a healthier lifestyle</p>
-                    <img src="../../backgrounds/home_top_bg.svg"></img>
-                </div>
-                <div className="p-2">
-                    <img src="../../backgrounds/home_top_bg.svg"></img>
+            <p className="my-2 text-6xl font-medium w-full justify-start">Your navigator to a healthier lifestyle</p>
+            <div className="flex flex-col">
+                
+                <div id="row-1-text" className=" w-screen p-2 content-start">
+                    <div className="w-1/3 pl-8"><p className="text-4xl font-thin w-full mr-2 content-start">Add your meals to our calendar, and track your nutrition.</p></div>
+                    <div className="w-2/3"><img></img></div>
                 </div>
             </div>
-            <div id="row-2-container" className="flex">
-                <div className="p-2">
-                    <img src="../../backgrounds/home_top_bg.svg"></img>
+            <div className="row-2-text">
                 </div>
-                <div id="row-2" className="relative p-2">
-                    <p className="absolute bg-red-300 w-fit mr-2 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia eligendi, alias laudantium perferendis iste commodi in nostrum, exercitationem, fuga ducimus nisi doloribus. Tenetur praesentium esse excepturi illum minus totam consequatur.</p>
-                    <img src="../../backgrounds/home_bottom_bg.svg"></img>
-                </div>
-            </div>
         </div>
     )
 }
