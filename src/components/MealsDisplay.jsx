@@ -8,9 +8,9 @@ import {
 
 export default function MealsDisplay ({ meals, setMeals }) {
     let mealNames = [];
-    const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/fooditem/"
-
     const [open, setOpen] = useState(0);
+    const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/fooditem/"                                                                                                                   
+    const DELETE_MEAL_API = "https://culinarycompassapi.onrender.com/delete/meal/"     
     console.log(meals)
     
     for(const meal in meals) {mealNames.push(meal)}
@@ -55,7 +55,29 @@ export default function MealsDisplay ({ meals, setMeals }) {
         return totalLengthSoFar
     }
 
-    const deleteFood = (foodName, mealName)=>{
+    const deleteMeal = (mealName, date) => {
+        if (!localStorage.getItem("username")){return}
+        fetch(DELETE_MEAL_API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "username": localStorage.getItem("username"),
+                "date": date,
+                "name": mealName
+            })
+        })
+         .then(response => {
+            if(response.ok) {response.json().then(() => {
+                console.log("delete meal")
+                delete meals[mealName]
+                setMeals({...meals})
+            })}
+         });
+    }
+
+    const deleteFood = (foodName, mealName) => {
         if (!localStorage.getItem("username")){return}
         fetch(DELETE_FOOD_API, {
             method: "POST",
@@ -64,13 +86,16 @@ export default function MealsDisplay ({ meals, setMeals }) {
             },
             body: JSON.stringify({
                 "username": localStorage.getItem("username"),
+                "date": localStorage.getItem("username"),
                 "name": foodName,
             }),
         })
          .then(response => {
             if(response.ok) { response.json().then(() => {
-                const newArray = meals[mealName].fooditems.filter((foodname) => foodname !== foodName);
-                console.log(newArray)
+                const newFoodItems = meals[mealName].fooditems.filter((food) => food.name !== foodName);
+                let newMeal = meals[mealName]
+                newMeal.fooditems = newFoodItems
+                setMeals({...meals, [mealName]: newMeal})
             })}
          });
     }
@@ -80,12 +105,12 @@ export default function MealsDisplay ({ meals, setMeals }) {
         {(meals != undefined) && 
         <div className="w-[80vw]">
             {mealNames.map((mealName, mi) => {
-                    console.log(meals[mealName])
+                    console.log("there", meals)
                     return (
                         <div id={mealName} key={mi} className="pb-8">
                             <div className="flex justify-between pb-4">
                                 <h1 className="text-4xl ">{capitalize(mealName)}</h1>
-                                <Button color="red">Delete</Button>
+                                <Button onClick={() => deleteMeal(mealName, meals[mealName].date)} color="red">Delete</Button>
                             </div>
                             {meals[mealName].fooditems.map((food, fi) => {
                                     const nutrients = getNutrients(food)
