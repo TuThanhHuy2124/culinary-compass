@@ -48,16 +48,16 @@ export default function MonthlyView () {
     }
 
     return (
-    <div id="month-view-display" className="relative min-h-[var(--min-display)] bg-circle-pattern bg-cover bg-center p-auto">
-        <div className="w-[80%] max-w-[680px] h-auto bg-gray-200 bg-opacity-50 m-auto p-5 rounded-[100px]">
+    <div id="month-view-display" className="relative min-h-[var(--min-display)] bg-circle-pattern bg-cover bg-center p-auto flex">
+        <div className="w-[80%] max-w-[680px] h-auto bg-gray-100 bg-opacity-95 m-auto p-5 rounded-lg">
             <FullCalendar
             datesSet={(arg)=>{setCurrentMonth(arg)}}
             plugins={[ dayGridPlugin, timeGridPlugin, interationPlugin ]}
             initialView="dayGridMonth"
             headerToolbar={{
-                start: "today prev,next",
+                start: "today",
                 center: "title",
-                end: "dayGridMonth,timeGridWeek,timeGridDay",
+                end: "prev,next",
             }}
             dateClick={(info) => {
                 console.log(info)

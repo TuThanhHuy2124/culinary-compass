@@ -1,9 +1,15 @@
-
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus, 
+.fc .fc-button-primary:not(:disabled):active:focus {
+    box-shadow: 0px 0px 5px 0.2rem var(--fc-button-active-bg-color);
+}
+.fc .fc-button-primary:focus {
+    box-shadow: 0px 0px 5px 0.2rem var(--fc-button-bg-color);
+}
 .fc-event-main {
     cursor: pointer;
 }
 .fc-daygrid-day:hover {
-    --hover-color: rgba(174, 179, 249, 0.5);
+    --hover-color: rgba(21, 101, 193, 0.5);
     --fc-today-bg-color: var(--hover-color);
     background-color: var(--hover-color);
 }

@@ -6,6 +6,7 @@ export default function DailyView () {
     const queryParams = new URLSearchParams(window.location.search);
     const date = queryParams.get("date");
     const start = queryParams.get("start");
+    
     const [data, setData] = []
     const DAILY_API = "https://culinarycompassapi.onrender.com/day"
     useEffect(() => {
@@ -35,7 +36,7 @@ export default function DailyView () {
         }
         getData();
         if(start !== null && window.location.href.indexOf("#") === -1) {
-            window.location.href = window.location.href + `#${start}`
+            window.location.href += `#${start}`
         }
     }, [])
 
