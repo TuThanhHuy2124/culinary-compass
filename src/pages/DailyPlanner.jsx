@@ -83,9 +83,8 @@ export default function DailyPlanner () {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "no-cors"
                 },
-                body: JSON.stringify({ "username": localStorage.getItem("username") }),
+                body: JSON.stringify({ "user": localStorage.getItem("username") }),
             })
             .then(response => {
                 console.log(response);
