@@ -25,29 +25,32 @@ export default function DailyPlanner () {
     const ALL_FOOD_API = "https://culinarycompassapi.onrender.com/all_fooditems/"
     
     const test = {
-        "Breakfast": {
+        "Pizza": {
           calories: 100,
+          fat: 10,
+          carbs: 32,
+          protein: 11,
+          cholesterol: 16,
+          sodium: 0.5,
           vitamin_a: 200
         },
-        "Lunch": {
-          calories: 100,
-          vitamin_b: 200
+        "Banana": {
+            calories: 100,
+            fat: 10,
+            carbs: 32,
+            protein: 11,
+            cholesterol: 16,
+            sodium: 0.5,
+            vitamin_a: 200
         },
-        "NB": {
-          calories: 100,
-          carbs: 200
-        },
-        "LA": {
-          calories: 100,
-          sodium: 200
-        },
-        "NOT": {
-          calories: 100,
-          vitamin_k: 200
-        },
-        "YES": {
-          calories: 100,
-          vitamin_e: 200
+        "Orange": {
+            calories: 100,
+            fat: 10,
+            carbs: 32,
+            protein: 11,
+            cholesterol: 16,
+            sodium: 0.5,
+            vitamin_a: 200
         },
     }
     
