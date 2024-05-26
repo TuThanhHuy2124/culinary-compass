@@ -13,6 +13,7 @@ export default withMT({
     extend: {
       backgroundImage: {
         'circle-pattern': "url('./public/backgrounds/circle_bg.svg')",
+        'cool-pattern' : "url('./public/backgrounds/Group 56.png')"
       }
     },
   },
