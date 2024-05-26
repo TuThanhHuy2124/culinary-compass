@@ -45,7 +45,6 @@ export default function DailyPlanner () {
         .then(response => {
             console.log(response)
             if(response.ok)  { response.json().then(res => {
-                console.log(res)
                 setMealList(mealList.concat(nutrients["name"]));
                 setFoodId(foodId.concat(res["item_id"]))
             })}
