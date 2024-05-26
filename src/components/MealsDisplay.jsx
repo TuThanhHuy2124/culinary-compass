@@ -21,6 +21,7 @@ export default function MealsDisplay ({ title, meals, mealTitles }) {
                             <h1 className="text-4xl">{mealTitle}</h1>
                             {
                                 meal[mealTitle].map((food, fi) => {
+                                    console.log(food)
                                     const overallIndex = mi * meals.length + fi;
                                     return (<Accordion key={fi} open={open === overallIndex + 1}
                                             className="mb-2 rounded-lg border border-blue-gray-100 px-4">

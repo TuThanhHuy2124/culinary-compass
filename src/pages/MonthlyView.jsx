@@ -11,6 +11,7 @@ import './Calendar.css';
 export default function MonthlyView () {
     const BASE_URL = 'http://localhost:5173'
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
+    const DAY_URL = "http://localhost:5173/day?"
     const [data, setData] = useState([]);
     const [month, setMonth] = useState(null);
     useEffect(() => {
@@ -29,7 +30,7 @@ export default function MonthlyView () {
                 if(response.ok) { response.json().then(meals => {
                     var allMeals = []
                     for (var meal in meals){
-                        var current_meal = {title: meal, date: meals[meal]["date"]};
+                        var current_meal = {title: meal, date: meals[meal]["date"], url: DAY_URL + "date=" + meals[meal]["date"]};
                         allMeals.push(current_meal);
                     }
 
@@ -37,7 +38,6 @@ export default function MonthlyView () {
                 })}
             });
         }
-        console.log(data)
         get_data();
     }, [month]);
 
