@@ -7,9 +7,30 @@ import { useState } from "react";
 export default function Layout() {
     const [loggedIn, setLoggedIn] = useState(!(localStorage.getItem("username") === null));
     const date = new Date();
+    const EMAIL_API = "https://culinarycompassapi.onrender.com/create/email"
     const saveUsername = () => {
         localStorage.setItem("username", document.getElementById("uid").value);
         setLoggedIn(true); 
+    }
+    const submitEmail = ()=> {
+        if(!document.getElementById("email")){
+            return
+        }
+        fetch(EMAIL_API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "mail": document.getElementById("email").value,
+            }),
+        })
+         .then(response => {
+            if(response.ok) { response.json().then( ()=> {
+                console.log("Success, email added");
+                document.getElementById("email").value = "";
+            })}
+         });
     }
     
     return (
@@ -44,7 +65,7 @@ export default function Layout() {
                         <p>GitHub</p>
                     </Button>
                 </a>
-                <h1 id="footer-title" className="text-2xl text-blue-800">CulinaryCompass</h1>
+                <div className="flex"><CustomInput name="Enter email newsletter:" id="email"></CustomInput><Button onClick={submitEmail} className="!bg-yellow-400 !text-blue-800">Join</Button></div>
                 <a href="mailto:thtu1@uci.edu">
                     <Button className="!bg-yellow-400 !text-blue-800">Contact Us</Button>
                 </a>
