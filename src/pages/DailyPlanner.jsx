@@ -41,16 +41,16 @@ export default function DailyPlanner () {
             body: JSON.stringify(nutrients),
         })
         .then(response => {
-            if(response.ok) {
+            if(response.ok)  { response.json().then(res => {
                 setMealList(mealList.concat(nutrients["name"]));
-                setFoodId(foodId.concat(response["item_id"]))
-            }
+                setFoodId(foodId.concat(res["item_id"]))
+            })}
         });
 
     }
-
+    
     const createMeal = ()=>{
-        if(!localStorage.getItem("username")){
+        if(!localStorage.getItem("username") || !document.getElementById("mealname")){
             window.location.href = "/";
         }
         var frequency = {}
@@ -62,13 +62,17 @@ export default function DailyPlanner () {
                 frequency[ele] = 1;
             }
         }
-        var id_to_frq = {[localStorage.getItem("username")]: frequency};
         fetch(INSERT_MEAL_API, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(id_to_frq),
+            body: JSON.stringify({
+                "frequency": frequency,
+                "username": localStorage.getItem("username"),
+                "name": document.getElementById("mealname").value,
+                "date": date,
+            }),
         })
         .then(response => {
             if(response.ok) {
@@ -92,7 +96,7 @@ export default function DailyPlanner () {
         
         <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
         <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>
-        <div className="w-1/3 mt-8"><CustomInput name="Meal Name"/></div>
+        <div className="w-1/3 mt-8"><CustomInput id="mealname" name="Meal Name"/></div>
         <Button onClick={createMeal} className="!bg-yellow-400 !text-blue-800 my-2">Add meal</Button>
     </div>
     );
