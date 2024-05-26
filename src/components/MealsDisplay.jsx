@@ -62,7 +62,10 @@ export default function MealsDisplay ({ meals }) {
                     console.log(meals[mealName])
                     return (
                         <div id={mealName} key={mi} className="pb-8">
-                            <h1 className="text-4xl pb-4">{capitalize(mealName)}</h1>
+                            <div className="flex justify-between pb-4">
+                                <h1 className="text-4xl ">{capitalize(mealName)}</h1>
+                                <Button color="red">Delete</Button>
+                            </div>
                             {meals[mealName].fooditems.map((food, fi) => {
                                     const nutrients = getNutrients(food)
                                     const totalLengthSoFar = getTotalLengthSoFar(mi)
