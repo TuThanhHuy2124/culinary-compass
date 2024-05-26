@@ -41,7 +41,7 @@ export default function FoodDetail(props){
     
 
     return (
-        <div className="flex flex-col justify-center w-[45vw] p-4 rounded-xl bg-blue-gray-100 bg-opacity-75">
+        <div className="flex flex-col justify-center w-[45vw] p-4 rounded-xl bg-blue-gray-100 bg-opacity-75 shadow-xl">
             <CustomInput id="name" name="Name of Food"/><br/>
             <div id="nutrients" className="overflow-auto max-h-[30vh]">
                 <p>Macronutrients Values:</p>

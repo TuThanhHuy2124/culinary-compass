@@ -90,7 +90,7 @@ export default function DailyPlanner () {
         <Button className="my-4"onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
         <div className="flex w-full justify-around">
             {addFood && <FoodDetail/>}
-            <MealList fooditems={mealList}></MealList>
+            {(mealList === null || addFood) && <MealList fooditems={mealList}></MealList>}
         </div>
         <Button id="submitfood" onClick={appendFood} className="!bg-yellow-400 !text-blue-800">Add Food</Button>
         
