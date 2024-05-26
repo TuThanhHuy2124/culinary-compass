@@ -6,7 +6,7 @@ export default function DailyView() {
     const queryParams = new URLSearchParams(window.location.search);
     const date = queryParams.get("date");
     const start = queryParams.get("start");
-    const [meals, setMeals] = useState([]);
+    const [meals, setMeals] = useState(null);
     const DAILY_API = "https://culinarycompassapi.onrender.com/day";
     useEffect(() => {
         const getData = async () => {
@@ -23,9 +23,8 @@ export default function DailyView() {
             })
              .then(response => {
                  if(response.ok) { response.json().then(meals => {
-                     var allMeals = [];
-                     console.log(allMeals);
-                     setMeals(allMeals);
+                    console.log(meals)
+                    setMeals(meals);
                  })}
              });
         };
@@ -42,12 +41,14 @@ export default function DailyView() {
         { side: ["foodA", "foodB", "foodC"] },
     ];
 
-    return (
+    return (<>
+        {meals !== null &&
         <div className="flex flex-col items-center justify-start min-h-[var(--min-display)]">
             <Link to="/month">
                 <h1 className="text-5xl m-12">{date}</h1>
             </Link>
             <MealsDisplay title="test" meals={meals} />
-        </div>
+        </div>}
+        </>
     );
 }
