@@ -11,8 +11,8 @@
     }
   }
 :root {
-    --header-height: 104px;
-    --footer-height: 64px;
+    --header-height: 136px;
+    --footer-height: 68px;
     --min-display: calc(100vh - var(--footer-height) - var(--header-height));
 
     --fc-button-bg-color: #1565c0b6;
@@ -29,4 +29,24 @@
 
 .row-1 p{
     width: inherit;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

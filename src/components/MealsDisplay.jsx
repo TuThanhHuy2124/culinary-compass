@@ -97,14 +97,14 @@ export default function MealsDisplay ({ meals }) {
                                             className="mb-2 rounded-lg border border-blue-gray-100 px-4 bg-blue-gray-100 bg-opacity-50">
                                                 <AccordionHeader onClick={(e) => {console.log(e); handleOpen(totalLengthSoFar + fi + 1)}}
                                                 className={`border-b-2 transition-all ${
-                                                    open === totalLengthSoFar + fi + 1 ? "text-blue-500 hover:!text-blue-700" : "!border-b-0"
+                                                    open === totalLengthSoFar + fi + 1 ? "text-blue-700 hover:!text-blue-500" : "!border-b-0"
                                                   }`}>{capitalize(food.name)}</AccordionHeader>
-                                                <AccordionBody className="bg-yellow-400 rounded-b-lg mb-4">
+                                                <AccordionBody className="bg-yellow-400 rounded-b-lg mb-4 bg-opacity-80">
                                                     {nutrients.map((nutrient, ni) => {
                                                             return (
                                                                 <div key={ni} className="w-full flex items-center justify-between px-10">
-                                                                    <h1>{humanize(Object.keys(nutrient)[0])}</h1>
-                                                                    <h1>{nutrient[Object.keys(nutrient)[0]]}</h1>
+                                                                    <h1 className=" text-lg">{humanize(Object.keys(nutrient)[0])}</h1>
+                                                                    <h1 className=" text-lg">{nutrient[Object.keys(nutrient)[0]]}</h1>
                                                                 </div>
                                                             )
                                                     })}

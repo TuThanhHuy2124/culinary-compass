@@ -84,21 +84,21 @@ export default function DailyPlanner () {
     
 
     return (
-    <div className="relative min-h-[var(--min-display)] flex flex-col items-center justify-center z-99999">
-        <Link to="/month"><h1 className="text-5xl">{reformatDate(date)}</h1></Link>
+    <div className="relative min-h-[var(--min-display)] flex flex-col items-center justify-center z-99999 pt-10 pb-10">
+        <Link to="/month"><h1 className="text-5xl mb-2 hover:underline active:border-8 active:no-underline active:text-gray-600 underline-offset-4 transition-all p-4 rounded-xl border-gray-600">{reformatDate(date)}</h1></Link>
         <h2 className="text-2xl">Your meal planning starts here!</h2>
         <SearchBar/>
-        <Button className="my-4"onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
+        <Button className="!text-base my-4 w-[30vw] !bg-yellow-400 !text-blue-700" onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>
         <div className="flex w-full justify-around">
             {addFood && <FoodDetail/>}
             {(mealList === null || addFood) && <MealList fooditems={mealList}></MealList>}
         </div>
-        <Button id="submitfood" onClick={appendFood} className="!bg-yellow-400 !text-blue-800">Add Food</Button>
+        <Button id="submitfood" onClick={appendFood} className="!text-base my-4 !bg-yellow-400 !text-blue-800 w-[20vw]">Add Food</Button>
+        <div className="w-1/3 mt-4"><CustomInput id="mealname" name="Meal Name"/></div>
+        <Button onClick={createMeal} className="!text-base !bg-yellow-400 !text-blue-800 mt-4 w-[20vw]">Add meal</Button>
         
         <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
         <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>
-        <div className="w-1/3 mt-8"><CustomInput id="mealname" name="Meal Name"/></div>
-        <Button onClick={createMeal} className="!bg-yellow-400 !text-blue-800 my-2">Add meal</Button>
     </div>
     );
 }
