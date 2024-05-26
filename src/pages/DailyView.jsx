@@ -43,7 +43,7 @@ export default function DailyView() {
         <div className="relative">
             <div className="flex flex-col items-center justify-start min-h-[var(--min-display)]">
                 <Link to="/month">
-                    <h1 className="text-5xl m-12">{reformatDate(date)}</h1>
+                    <h1 className="text-5xl m-12 hover:underline active:border-8 active:no-underline active:text-gray-600 underline-offset-4 transition-all p-4 rounded-xl border-gray-600">{reformatDate(date)}</h1>
                 </Link>
                 <MealsDisplay title="test" meals={meals} />
             </div>

@@ -19,14 +19,14 @@ export function SearchBar() {
   }
   
   return (
-    <div className="m-4">
+    <div className="mt-8">
         <Menu
           dismiss={{
             itemPress: false,
           }}
         >
           <MenuHandler>
-            <Button>Browse Food</Button>
+            <Button className="w-[30vw] !bg-yellow-400 !text-blue-700 !text-base">Browse Food</Button>
           </MenuHandler>
           <MenuList>
             <Input

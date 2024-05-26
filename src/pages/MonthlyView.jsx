@@ -7,11 +7,13 @@ import tippy from "tippy.js";
 import 'tippy.js/themes/translucent.css';
 import 'tippy.js/dist/tippy.css';
 import './Calendar.css';
+import Spinner from "../components/Spinner";
 
 export default function MonthlyView () {
     const BASE_URL = 'http://localhost:5173'
     const CALENDER_API = "https://culinarycompassapi.onrender.com/month";
     const DAY_URL = "http://localhost:5173/day?"
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [month, setMonth] = useState(null);
     useEffect(() => {
@@ -35,8 +37,9 @@ export default function MonthlyView () {
                         allMeals.push(current_meal);
                     }
                     
-                    setData(allMeals);
+                    setData(allMeals)
                 })}
+                setLoading(false)
             });
         }
         get_data();
@@ -49,6 +52,8 @@ export default function MonthlyView () {
     }
 
     return (
+    <>
+    {loading ? <Spinner/> :
     <div id="month-view-display" className="relative min-h-[var(--min-display)] bg-circle-pattern bg-cover bg-center p-auto flex">
         <div className="w-[80%] max-w-[680px] h-auto bg-gray-100 bg-opacity-95 m-auto p-5 rounded-lg">
             <FullCalendar
@@ -81,6 +86,7 @@ export default function MonthlyView () {
                 });
             }}/>
         </div>
-    </div>
+    </div>}
+    </>
     )
 }

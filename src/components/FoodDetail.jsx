@@ -2,6 +2,7 @@ import { CustomInput } from "./CustomInput";
 import { FoodInput } from "./FoodInput";
 import { LinkButton } from "./LinkButton";
 import { Button } from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
 
 export default function FoodDetail(props){
     const macro = [
@@ -42,24 +43,26 @@ export default function FoodDetail(props){
 
     return (
         <div className="flex flex-col justify-center w-[45vw] p-4 rounded-xl bg-blue-gray-100 bg-opacity-75 shadow-xl">
-            <CustomInput id="name" name="Name of Food"/><br/>
+            <div className="bg-white bg-opacity-50 h-fit rounded-lg mb-4">
+                <Input label="Name of Food"></Input>
+            </div>
             <div id="nutrients" className="overflow-auto max-h-[30vh]">
                 <p>Macronutrients Values:</p>
                 {macro.map((nutrient, i) => (
                     <>
-                    <FoodInput id={nutrient} key={i} name={nutrient + ` ${nutrient === "Calorie" ? "(cal)" : "(g)"}:`}></FoodInput>
+                    <FoodInput id={nutrient} key={i} name={nutrient + ` ${nutrient === "Calorie" ? "(cal)" : "(g)"}`}></FoodInput>
                     </>
                 ))}
                 <p>Miscellaneous Values</p>
                 {misc.map((nutrient, i) => (
                     <>
-                    <FoodInput id={nutrient} key={i} name={nutrient + " (g):"}></FoodInput>
+                    <FoodInput id={nutrient} key={i} name={nutrient + " (g)"}></FoodInput>
                     </>
                 ))}
                 <p>Micronutrients Values:</p>
                 {micro.map((nutrient, i) => (
                     <>
-                    <FoodInput id={nutrient} key={i} name={nutrient + " (g):"}></FoodInput>
+                    <FoodInput id={nutrient} key={i} name={nutrient + " (g)"}></FoodInput>
                     </>
                 ))}
             </div>

@@ -39,14 +39,14 @@ export default function Layout() {
             <Outlet/>
             <footer className="w-screen h-max flex items-center justify-between max-w-full p-3 shadow-[0_-4px_4px_rgba(0,0,0,0.3)]">
                 <a href="https://github.com/TuThanhHuy2124/culinary-compass" target="_blank">
-                    <Button className="!bg-yellow-400 !text-blue-800 !font-[Artifika] flex items-center justify-center`">
+                    <Button className="!bg-yellow-400 !text-blue-800 flex items-center justify-center`">
                         <img src="../../logos/github.svg" alt="" className="w-5 mr-1"/>
                         <p>GitHub</p>
                     </Button>
                 </a>
                 <h1 id="footer-title" className="text-2xl text-blue-800">CulinaryCompass</h1>
                 <a href="mailto:thtu1@uci.edu">
-                    <Button className="!bg-yellow-400 !text-blue-800 !font-[Artifika]">Contact Us</Button>
+                    <Button className="!bg-yellow-400 !text-blue-800">Contact Us</Button>
                 </a>
             </footer>
         </>
