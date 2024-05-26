@@ -10,6 +10,7 @@ export default function DailyView() {
     const start = queryParams.get("start");
     const [meals, setMeals] = useState(null);
     const [loading, setLoading] = useState(true);
+
     const DAILY_API = "https://culinarycompassapi.onrender.com/day";
     useEffect(() => {
         const getData = async () => {
@@ -45,7 +46,7 @@ export default function DailyView() {
                 <Link to="/month">
                     <h1 className="text-5xl m-12 hover:underline active:border-8 active:no-underline active:text-gray-600 underline-offset-4 transition-all p-4 rounded-xl border-gray-600">{reformatDate(date)}</h1>
                 </Link>
-                <MealsDisplay title="test" meals={meals} />
+                <MealsDisplay title="test" meals={meals} setMeals={setMeals}/>
             </div>
             <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
             <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>

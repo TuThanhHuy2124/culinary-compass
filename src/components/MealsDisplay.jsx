@@ -6,10 +6,9 @@ import {
     Button,
   } from "@material-tailwind/react";
 
-export default function MealsDisplay ({ meals }) {
+export default function MealsDisplay ({ meals, setMeals }) {
     let mealNames = [];
     const DELETE_FOOD_API = "https://culinarycompassapi.onrender.com/delete/fooditem/"
-
 
     const [open, setOpen] = useState(0);
     console.log(meals)
@@ -56,10 +55,8 @@ export default function MealsDisplay ({ meals }) {
         return totalLengthSoFar
     }
 
-    const deleteFood = (foodName)=>{
-        if (!localStorage.getItem("username")){
-            return
-        }
+    const deleteFood = (foodName, mealName)=>{
+        if (!localStorage.getItem("username")){return}
         fetch(DELETE_FOOD_API, {
             method: "POST",
             headers: {
@@ -71,8 +68,10 @@ export default function MealsDisplay ({ meals }) {
             }),
         })
          .then(response => {
-             if(response.ok) { response.json().then(() => {
-             })}
+            if(response.ok) { response.json().then(() => {
+                const newArray = meals[mealName].fooditems.filter((foodname) => foodname !== foodName);
+                console.log(newArray)
+            })}
          });
     }
 
@@ -107,7 +106,7 @@ export default function MealsDisplay ({ meals }) {
                                                             )
                                                     })}
                                                     <div className="w-full flex items-center justify-center">
-                                                        <Button onClick={() => deleteFood(food.name)}color="red">Delete</Button>
+                                                        <Button onClick={() => deleteFood(food.name, mealName)}color="red">Delete</Button>
                                                     </div>
                                                 </AccordionBody>
                                             </Accordion>)
