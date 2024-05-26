@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { reformatDate } from "./DailyPlanner";
 import MealsDisplay from "../components/MealsDisplay";
+import Spinner from "../components/Spinner";
 
 export default function DailyView() {
     const queryParams = new URLSearchParams(window.location.search);
     const date = queryParams.get("date");
     const start = queryParams.get("start");
     const [meals, setMeals] = useState(null);
+    const [loading, setLoading] = useState(true);
     const DAILY_API = "https://culinarycompassapi.onrender.com/day";
     useEffect(() => {
         const getData = async () => {
@@ -23,10 +25,11 @@ export default function DailyView() {
                 }),
             })
              .then(response => {
-                 if(response.ok) { response.json().then(meals => {
+                if(response.ok) { response.json().then(meals => {
                     console.log(meals)
                     setMeals(meals);
-                 })}
+                })}
+                setLoading(false);
              });
         };
         getData();
@@ -47,6 +50,7 @@ export default function DailyView() {
             <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
             <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>
         </div>}
+        {loading && <Spinner/>}
         </>
     );
 }

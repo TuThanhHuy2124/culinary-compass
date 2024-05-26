@@ -18,3 +18,7 @@
     --fc-today-bg-color: var(--active-color);
     background-color: var(--active-color);
 }
+#spinner { 
+    border-color: rgb(213, 213, 213);
+    border-top-color: rgba(21, 101, 193, 1); 
+}

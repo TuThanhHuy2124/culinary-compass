@@ -28,12 +28,13 @@ export default function MonthlyView () {
             })
             .then(response => {
                 if(response.ok) { response.json().then(meals => {
+                    console.log(meals)
                     var allMeals = []
                     for (var meal in meals){
                         var current_meal = {title: meal, date: meals[meal]["date"], url: DAY_URL + "date=" + meals[meal]["date"]};
                         allMeals.push(current_meal);
                     }
-
+                    
                     setData(allMeals);
                 })}
             });

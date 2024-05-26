@@ -15,6 +15,7 @@ export default function DailyPlanner () {
     const [addFood, setAddFood] = useState(false);
     const [mealList, setMealList] = useState([]);
     const [foodId, setFoodId] = useState([]);
+    
     const queryParams = new URLSearchParams(window.location.search);
     const date = queryParams.get("date");
     const INSERT_FOOD_API = "https://culinarycompassapi.onrender.com/create/food_item/"

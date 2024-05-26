@@ -11,7 +11,7 @@ export default function Home () {
                         <h1 className="text-6xl text-white mb-2 font-bold">Welcome to CulinaryCompass!</h1>
                         <h2 className="text-2xl text-white font-light">Start planning your meals at UCI and beyond!</h2>
                     </div>
-                    <img src="../../backgrounds/home_img.png" className="h-auto w-48"></img>
+                    <img src="../../logos/anteater.png" className="h-auto w-72"></img>
                 </div>
             </div>
             <Button onClick={()=>{
