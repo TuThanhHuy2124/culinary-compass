@@ -15,9 +15,12 @@
     --footer-height: 64px;
     --min-display: calc(100vh - var(--footer-height) - var(--header-height));
 
-    --fc-button-bg-color: red;
-    --fc-button-hover-bg-color: blue;
-    --fc-button-active-bg-color: green;
+    --fc-button-bg-color: #1565c0b6;
+    --fc-button-border-color: transparent;
+    --fc-button-hover-bg-color: #1565c0;
+    --fc-button-active-bg-color: rgba(255, 238, 88, 1);
+    --fc-button-hover-border-color: transparent;
+    --fc-button-active-border-color: transparent;
 }
 
 * {

@@ -37,7 +37,7 @@ export default function DailyPlanner () {
         
         <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
         <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>
-        <div className="w-1/3 mt-8"><CustomInput name="Meal Name:"/></div>
+        <div className="w-1/3 mt-8"><CustomInput name="Meal Name"/></div>
         <Button onClick={addMeal} className="!bg-yellow-400 !text-blue-800 my-2">Add meal</Button>
     </div>
     );

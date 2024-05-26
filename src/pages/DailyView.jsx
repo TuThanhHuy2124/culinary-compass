@@ -30,8 +30,8 @@ export default function DailyView() {
              });
         };
         getData();
-        if (start !== null && window.location.href.indexOf("#") === -1) {
-            window.location.href = window.location.href + `#${start}`;
+        if(start !== null && window.location.href.indexOf("#") === -1) {
+            window.location.href = window.location.href + `#${start}`
         }
     }, []);
 
