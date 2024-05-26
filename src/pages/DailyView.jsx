@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import MealsDisplay from "../components/MealsDisplay";
 import { useState, useEffect } from "react";
+import { reformatDate } from "./DailyPlanner";
+import MealsDisplay from "../components/MealsDisplay";
 
 export default function DailyView() {
     const queryParams = new URLSearchParams(window.location.search);
@@ -34,20 +35,17 @@ export default function DailyView() {
         }
     }, []);
 
-    const testObj = [
-        { breakfast: ["foodA", "foodB", "foodC"] },
-        { lunch: ["foodA", "foodB", "foodC"] },
-        { dinner: ["foodA", "foodB", "foodC"] },
-        { side: ["foodA", "foodB", "foodC"] },
-    ];
-
     return (<>
         {meals !== null &&
-        <div className="flex flex-col items-center justify-start min-h-[var(--min-display)]">
-            <Link to="/month">
-                <h1 className="text-5xl m-12">{date}</h1>
-            </Link>
-            <MealsDisplay title="test" meals={meals} />
+        <div className="relative">
+            <div className="flex flex-col items-center justify-start min-h-[var(--min-display)]">
+                <Link to="/month">
+                    <h1 className="text-5xl m-12">{reformatDate(date)}</h1>
+                </Link>
+                <MealsDisplay title="test" meals={meals} />
+            </div>
+            <img className="absolute bottom-0 left-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_1.png"></img>
+            <img className="absolute top-0 right-0 z-[-1] size-[30vw]" src="../../backgrounds/curve_2.png"></img>
         </div>}
         </>
     );

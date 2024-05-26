@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 import { CustomInput } from "../components/CustomInput";
 import MealList from "../components/MealList";
 
+export const reformatDate = (date) => {
+    const [y, m, d] = date.split("-");
+    return `${m}/${d}/${y}`
+}
+
 export default function DailyPlanner () {
     const [addFood, setAddFood] = useState(false);
     const [mealList, setMealList] = useState([]);
@@ -14,6 +19,8 @@ export default function DailyPlanner () {
     const date = queryParams.get("date");
     const INSERT_FOOD_API = "https://culinarycompassapi.onrender.com/create/food_item/"
     const INSERT_MEAL_API = "https://culinarycompassapi.onrender.com/create/meal/"
+
+    
 
     const appendFood = async () => {
         var nutrients = new Object();
@@ -75,7 +82,7 @@ export default function DailyPlanner () {
 
     return (
     <div className="relative min-h-[var(--min-display)] flex flex-col items-center justify-center z-99999">
-        <Link to="/month"><h1 className="text-5xl">{date}</h1></Link>
+        <Link to="/month"><h1 className="text-5xl">{reformatDate(date)}</h1></Link>
         <h2 className="text-2xl">Your meal planning starts here!</h2>
         <SearchBar/>
         <Button className="my-4"onClick={(e) => setAddFood(!addFood)}>Add Custom Food Item</Button>

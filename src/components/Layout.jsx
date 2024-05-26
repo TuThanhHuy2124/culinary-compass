@@ -11,7 +11,7 @@ export default function Layout() {
         localStorage.setItem("username", document.getElementById("uid").value);
         setLoggedIn(true); 
     }
-
+    
     return (
         <>
             <header className="relative w-screen h-max flex items-center justify-between shadow-[0_4px_4px_rgba(143,140,140)] max-w-full z-[99999]">
@@ -30,7 +30,7 @@ export default function Layout() {
                 </ul> :
                 <ul className="flex space-x-4 m-7">
                     <LinkButton destination="/" name="Home"></LinkButton>
-                    <LinkButton destination="/day" name="Today"></LinkButton>
+                    <LinkButton destination={`/day?date=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`} name="Today"></LinkButton>
                     <LinkButton destination={`/plan?date=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`} name="My Plan"></LinkButton>
                     <LinkButton destination="/month" name="Calendar"></LinkButton>
                 </ul>
