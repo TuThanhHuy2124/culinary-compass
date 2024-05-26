@@ -3,7 +3,7 @@ import { FoodInput } from "./FoodInput";
 import { LinkButton } from "./LinkButton";
 import { Button } from "@material-tailwind/react";
 
-export default function FoodDetail(){
+export default function FoodDetail(props){
     const macro = [
         "Calorie",
         "Protein",
@@ -37,28 +37,8 @@ export default function FoodDetail(){
         "Selenium",
     ]
     
-    const INSERT_FOOD_API = "https://culinarycompassapi.onrender.com/create/food_item/"
-    const addFood = async () => {
-        var nutrients = new Object();
-        nutrients["name"] = document.getElementById("name").value;
-        var input = document.getElementById("nutrients");
-        var children = input.getElementsByTagName("input");
-        for (var i = 0; i < children.length; i++) {
-            if (children[i].value > 0){
-                nutrients[children[i].id.toLowerCase()] = children[i].value;
-            }
-        }
-        fetch(INSERT_FOOD_API, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(nutrients),
-        })
-        .then(response => {
-            if(response.ok) {console.log("Success!");}
-        });
-    }
+    
+    
 
     return (
         <div className="flex flex-col justify-center w-full border-4 p-4 border-gray rounded-xl bg-[#DCDDFF] bg-opacity-75">
@@ -83,7 +63,7 @@ export default function FoodDetail(){
                     </>
                 ))}
             </div>
-            <Button id="submitfood" onClick={addFood} className="!bg-yellow-400 !text-blue-800">Add Food</Button>
+            
         </div>
     );
 }
